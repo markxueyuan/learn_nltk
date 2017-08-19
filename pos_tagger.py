@@ -4,6 +4,7 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.pipeline import Pipeline
 from nltk import word_tokenize
 
+
 tagged_sentences = nltk.corpus.treebank.tagged_sents()
 
 def features(sentence, index):

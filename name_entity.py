@@ -2,6 +2,7 @@ from nltk import word_tokenize, pos_tag, ne_chunk
 from nltk.chunk import conlltags2tree, tree2conlltags
 from os import walk, path
 from collections import Counter
+from sys import platform
 
 sentence = 'Mark and John are working at Google'
 
@@ -11,7 +12,12 @@ iob_tagged = tree2conlltags(ne_tree)
 
 ne_tree2 = conlltags2tree(iob_tagged)
 
-corpus_root = '/media/markxueyuan/Data/gmb-2.2.0'
+if platform == 'linux' or platform == 'linux2':
+    corpus_root = '/media/markxueyuan/Data/gmb-2.2.0'
+elif platform == 'darwin':
+    pass
+elif platform == 'win32':
+    corpus_root = 'D:/Corpus/gmb-2.2.0'
 
 name_tags = Counter()
 
