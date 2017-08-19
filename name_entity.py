@@ -3,6 +3,8 @@ from nltk.chunk import conlltags2tree, tree2conlltags
 from os import walk, path
 from collections import Counter
 from sys import platform
+import string
+from nltk.stem.snowball import SnowballStemmer
 
 sentence = 'Mark and John are working at Google'
 
@@ -40,3 +42,19 @@ for root, dirs, files in walk(corpus_root):
 
 print(name_tags)
 
+def features(tokens, index, history):
+    """
+    :param tokens: a POS-tagged sentence [(w1, t1), ...]
+    :param index: the index of the token we want to extract features for
+    :param history: the previous predicted IOB tags
+    :return:
+    """
+
+    stemmer = SnowballStemmer('english')
+
+    tokens = [('[START2]', '[START2]'), ('[START1]', '[START1]')] + list(tokens) + [('[END1]', '[END1]'), ('[END2]', '[END2]')]
+    history = ['[START2]', '[START1]'] + list(history)
+
+    index += 2
+
+    word, pos = tokens[index]
