@@ -10,7 +10,6 @@ from nltk.corpus.reader import WordListCorpusReader
 #     when call the words() function, it calls nltk.tokenize.line_tokenize()
 #     on the raw file data
 
-from nltk.corpus.reader import TaggedCorpusReader
 
 
 
@@ -25,3 +24,30 @@ reader.raw()
 from nltk.corpus import stopwords
 stopwords.words()
 stopwords.words('English')
+
+from nltk.corpus.reader import TaggedCorpusReader
+
+reader = TaggedCorpusReader('.', '.*\.pos')
+reader.words()
+reader.tagged_words()
+reader.tagged_sents()
+reader.tagged_paras()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
